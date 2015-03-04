@@ -97,9 +97,13 @@
 
 				tmpl.cache["ss-gridfield-add-inline-template"] = tmpl(row.html());
 
-				this.find("tbody").append(tmpl("ss-gridfield-add-inline-template", { num: num }));
+                var $newRow = tmpl("ss-gridfield-add-inline-template", { num: num });
+
+				this.find("tbody").append($newRow);
 				this.find(".ss-gridfield-no-items").hide();
 				this.data("add-inline-num", num + 1);
+
+                $newRow.find('textarea.htmleditorfield').trigger('add');
 			}
 		});
 
